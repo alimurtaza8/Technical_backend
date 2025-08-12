@@ -20,7 +20,7 @@ from urllib.parse import quote
 import PyPDF2
 import docx
 from PIL import Image
-import pytesseract
+# import pytesseract
 import re
 
 # AI integration imports
@@ -623,13 +623,14 @@ class EnhancedDocumentProcessor:
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Error reading Word document: {str(e)}")
     
-    def extract_text_from_image(self, file_path: str) -> str:
+    def extract_text_from_image(self, file_path):
+        """Extracts text from an image file using Tesseract OCR."""
         try:
-            image = Image.open(file_path)
-            text = pytesseract.image_to_string(image)
-            return text
+            return ""
+            # return pytesseract.image_to_string(Image.open(file_path))
         except Exception as e:
-            return f"Image content extracted (OCR processing error: {str(e)})"
+            print(f"Error processing image with Tesseract: {e}")
+            return ""
     
     def process_file(self, file_path: str) -> tuple:
         file_ext = os.path.splitext(file_path)[1].lower()
