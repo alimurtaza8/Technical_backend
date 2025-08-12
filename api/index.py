@@ -1,5 +1,3 @@
-
-
 # main.py - Fixed Enhanced FastAPI Backend for RFP Proposal Generator
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
@@ -147,8 +145,8 @@ app.add_middleware(
 )
 
 # Configuration
-UPLOAD_DIR = "uploads"
-OUTPUT_DIR = "outputs"
+UPLOAD_DIR = "/tmp/uploads"
+OUTPUT_DIR = "/tmp/outputs"
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
 
 # Ensure directories exist
